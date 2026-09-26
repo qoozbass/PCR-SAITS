@@ -1,0 +1,12 @@
+numpy
+pandas
+torch
+pypots
+scipy
+scikit-learn
+xgboost
+matplotlib
+shap
+benchpots
+tsdb
+pyarrow

@@ -1,0 +1,74 @@
+{
+  "source_archive": "make_ett_physionet_csv_bridge.zip",
+  "source_archive_sha256": "e9ec01f79a09ceeb47da2c2e053c010cf8bb8921cbc03f693aebf024bffa7def",
+  "program_count": 11,
+  "note": "These 11 files are byte-for-byte copies of the user-supplied program archive. They are historical/reproduction scripts and are kept separate from the reusable pcrsaits package.",
+  "files": [
+    {
+      "source_member": "generate_figure3.py",
+      "released_path": "paper_reproduction/legacy_scripts/generate_figure3.py",
+      "size": 26947,
+      "sha256": "30198709969cce2b2d39db444414f60ee9cb8e09a72072e0db7f9220348943c9"
+    },
+    {
+      "source_member": "make_ett_physionet_csv_bridge.py",
+      "released_path": "paper_reproduction/legacy_scripts/make_ett_physionet_csv_bridge.py",
+      "size": 20581,
+      "sha256": "1b9587f22129c7edafd55ee2c8815c0cf3eb643991fc530ac5dc032ec5b3f852"
+    },
+    {
+      "source_member": "pcr_saits_e13_e14_evaluator.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_e13_e14_evaluator.py",
+      "size": 47150,
+      "sha256": "0b14e5c455403b4c03d56bf6e1f2c75e8be630470c4047aec1291784fa5b04d3"
+    },
+    {
+      "source_member": "pcr_saits_new_datasets.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_new_datasets.py",
+      "size": 44159,
+      "sha256": "f5cf4d1a2c3056dc262f057ed5a054c257c0af6f55f924d4aed0c2440d9d33a4"
+    },
+    {
+      "source_member": "pcr_saits_posthoc_analysis.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_posthoc_analysis.py",
+      "size": 35517,
+      "sha256": "f543740cd822f267995e9fc027932acad9dfbf7432d59e3a69b42463a9fe0fd0"
+    },
+    {
+      "source_member": "pcr_saits_reviewer_experiments_patched4.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_reviewer_experiments_patched4.py",
+      "size": 41863,
+      "sha256": "f074dadef7c0409d25affc18d364dbf74fbb634197882f187b7c80a3d8889a00"
+    },
+    {
+      "source_member": "pcr_saits_v1_4_paper_suite_patched6.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_v1_4_paper_suite_patched6.py",
+      "size": 102978,
+      "sha256": "7d932f74bdd43b80cf6eaaddd40a75cad8ec574e62e38e25622cc7c180cb8985"
+    },
+    {
+      "source_member": "pcr_saits_v1_5_main_extensions.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_v1_5_main_extensions.py",
+      "size": 46551,
+      "sha256": "ec6128988dce81583291179aecc0ed64fbb1ac59dc9cf884e4f47c9ee1beda75"
+    },
+    {
+      "source_member": "pcr_saits_v7_1_paper_suite.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_v7_1_paper_suite.py",
+      "size": 103115,
+      "sha256": "93b4db0e34e7ba8f63ce2fdbc417b82b269c769e3164b11c8b46de94e2d30fde"
+    },
+    {
+      "source_member": "pcr_saits_v7_1b_per_position.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_v7_1b_per_position.py",
+      "size": 123480,
+      "sha256": "9021fd97baa0ae837130dd40ff5d1d7945a738b8c4cd51909cce3ac9f99265a7"
+    },
+    {
+      "source_member": "pcr_saits_v7_2_paper_suite.py",
+      "released_path": "paper_reproduction/legacy_scripts/pcr_saits_v7_2_paper_suite.py",
+      "size": 118614,
+      "sha256": "5d3c1e5d228d8ffe310a23695ff2ec92d508cf79994ecf8574d6921cdf27b77a"
+    }
+  ]
+}
