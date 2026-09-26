@@ -1,0 +1,42 @@
+name: Publish to PyPI
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pypi-publish:
+    name: Upload release to PyPI
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Download audited v1.0.0 distributions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p dist
+          gh release download v1.0.0 \
+            --repo "${GITHUB_REPOSITORY}" \
+            --pattern "pcrsaits-1.0.0-py3-none-any.whl" \
+            --pattern "pcrsaits-1.0.0.tar.gz" \
+            --dir dist
+
+      - name: Verify audited SHA256 hashes
+        run: |
+          echo "c63ebc3226df8d0ffe238b026bc5450ee6242d33a81f33f456627e0a41902a73  dist/pcrsaits-1.0.0-py3-none-any.whl" | sha256sum -c -
+          echo "1aeac34cd7173cfd6845d1e93ca91add6b7575c1fec0fd8080eb1889990d60ee  dist/pcrsaits-1.0.0.tar.gz" | sha256sum -c -
+
+      - name: Show distributions
+        run: ls -lh dist
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
