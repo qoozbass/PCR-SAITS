@@ -1,6 +1,7 @@
 # PCR-SAITS
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22973879.svg)](https://doi.org/10.5281/zenodo.22973879)
+[![PyPI version](https://img.shields.io/pypi/v/pcrsaits.svg)](https://pypi.org/project/pcrsaits/)
 
 PCR-SAITS is a lightweight residual-correction layer for multivariate
 time-series imputation. The public package exposes the same audited PCR core
