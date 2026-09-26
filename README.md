@@ -15,6 +15,18 @@ DOI: https://doi.org/10.1016/j.eswa.2026.134510
 
 ## Install
 
+From PyPI:
+
+```bash
+python -m pip install pcrsaits
+```
+
+To install the exact v1.0.0 release:
+
+```bash
+python -m pip install pcrsaits==1.0.0
+```
+
 From this source tree:
 
 ```bash
