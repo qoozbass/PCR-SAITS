@@ -10,30 +10,28 @@ jobs:
   pypi-publish:
     name: Upload release to PyPI
     runs-on: ubuntu-latest
-
     environment:
       name: pypi
-
     permissions:
       contents: read
       id-token: write
 
     steps:
-      - name: Download audited v1.0.0 distributions
+      - name: Download qualified v1.1.0 distributions
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p dist
-          gh release download v1.0.0 \
+          gh release download v1.1.0 \
             --repo "${GITHUB_REPOSITORY}" \
-            --pattern "pcrsaits-1.0.0-py3-none-any.whl" \
-            --pattern "pcrsaits-1.0.0.tar.gz" \
+            --pattern "pcrsaits-1.1.0-py3-none-any.whl" \
+            --pattern "pcrsaits-1.1.0.tar.gz" \
             --dir dist
 
-      - name: Verify audited SHA256 hashes
+      - name: Verify qualified SHA256 hashes
         run: |
-          echo "c63ebc3226df8d0ffe238b026bc5450ee6242d33a81f33f456627e0a41902a73  dist/pcrsaits-1.0.0-py3-none-any.whl" | sha256sum -c -
-          echo "1aeac34cd7173cfd6845d1e93ca91add6b7575c1fec0fd8080eb1889990d60ee  dist/pcrsaits-1.0.0.tar.gz" | sha256sum -c -
+          echo "45b0454f61c255d458b1d1734d97f176a4fc18e7070036e9e7181da4cf3d9dbb  dist/pcrsaits-1.1.0-py3-none-any.whl" | sha256sum -c -
+          echo "e013c276666e9bb1b54cd6e23c60818e4705bad1d7537bd9b4c28d157d0d06cb  dist/pcrsaits-1.1.0.tar.gz" | sha256sum -c -
 
       - name: Show distributions
         run: ls -lh dist
