@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite both the software and the paper."
+message: "If you use this software, please cite both the software version used and the associated paper."
 title: "PCR-SAITS"
 type: software
 authors:
@@ -11,8 +11,11 @@ repository-code: "https://github.com/qoozbass/PCR-SAITS"
 url: "https://github.com/qoozbass/PCR-SAITS"
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.22973879"
-    description: "Software archive DOI"
+    value: "10.5281/zenodo.23000374"
+    description: "PCR-SAITS v1.1.0 software archive DOI"
+  - type: doi
+    value: "10.5281/zenodo.22973878"
+    description: "PCR-SAITS all-versions concept DOI"
 preferred-citation:
   type: article
   authors:
