@@ -250,3 +250,9 @@ class PCRBRITS(_PublicPCRBase):
     """Public convenience API for PCR correction over a trained BRITS backbone."""
 
     public_name = "PCRBRITS"
+
+
+class PCRCSDI(_PublicPCRBase):
+    """Public convenience API for PCR correction over a trained CSDI backbone."""
+
+    public_name = "PCRCSDI"

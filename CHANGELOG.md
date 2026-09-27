@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.1.0 — 2026-09-27
+
+- Added `CSDIBackbone` as the third supported backbone adapter.
+- Added public `PCRCSDI` wrapper over the unchanged audited `PCRCorrector`.
+- Added `CSDIBackbone.sample()` for probabilistic diffusion samples with shape
+  `[N, S, L, F]`.
+- Added deterministic `CSDIBackbone.impute()` using median aggregation by
+  default for PCR compatibility.
+- Added deterministic sampling controls, external RNG-state restoration,
+  validation/parameter guards, observed-value preservation, and CSDI
+  checkpoint delegation.
+- Added CSDI unit/integration tests and a real-PyPOTS verification script.
+- Did not add the experimental PCR-CSDI-UQ feature path.
+- Preserved the PCR numerical core and existing SAITS/BRITS adapter logic.
+
 ## 1.0.0 — 2026-09-26
 
 - Adopted the MIT License.

@@ -1,4 +1,5 @@
 from .base import BackboneAdapter
 from .saits import SAITSBackbone
 from .brits import BRITSBackbone
-__all__ = ["BackboneAdapter", "SAITSBackbone", "BRITSBackbone"]
+from .csdi import CSDIBackbone
+__all__ = ["BackboneAdapter", "SAITSBackbone", "BRITSBackbone", "CSDIBackbone"]

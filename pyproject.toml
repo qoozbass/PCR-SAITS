@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pcrsaits"
-version = "1.0.0"
-description = "PCR-SAITS lightweight residual correction for SAITS and BRITS imputation"
+version = "1.1.0"
+description = "PCR lightweight residual correction for SAITS, BRITS, and CSDI time-series imputation"
 readme = "README.md"
 authors = [{name = "Sawet Somnugpong"}]
 license = "MIT"
-keywords = ["time-series", "imputation", "SAITS", "BRITS", "missing-data"]
+keywords = ["time-series", "imputation", "SAITS", "BRITS", "CSDI", "missing-data"]
 requires-python = ">=3.9"
-dependencies = ["numpy", "torch", "pypots"]
+dependencies = ["numpy", "torch", "pypots>=1.5"]
 
 [tool.setuptools.packages.find]
 where = ["."]

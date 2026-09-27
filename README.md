@@ -1,34 +1,21 @@
 # PCR-SAITS
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22973879.svg)](https://doi.org/10.5281/zenodo.22973879)
-[![PyPI version](https://img.shields.io/pypi/v/pcrsaits.svg)](https://pypi.org/project/pcrsaits/)
-
 PCR-SAITS is a lightweight residual-correction layer for multivariate
-time-series imputation. The public package exposes the same audited PCR core
-with SAITS and BRITS backbones through a small user-facing API.
+time-series imputation. The development tree now exposes the same audited PCR
+core over three backbone adapters: **SAITS, BRITS, and CSDI**.
 
-Paper:
+The published paper remains:
 
 **PCR-SAITS: A Lightweight Disagreement-Based Residual Corrector for
 SAITS-Based Multivariate Time Series Imputation**  
 Sawet Somnugpong, *Expert Systems with Applications* (2026)  
 DOI: https://doi.org/10.1016/j.eswa.2026.134510
 
-## Install
+## Release status
 
-From PyPI:
+This source tree is the finalized `v1.1.0` source candidate produced from a cryptographically bound Phase-3 qualification PASS. Published `v1.0.0` artifacts and tags remain immutable. Phase 3.7 final artifact build/install/hash qualification must still pass before publication.
 
-```bash
-python -m pip install pcrsaits
-```
-
-To install the exact v1.0.0 release:
-
-```bash
-python -m pip install pcrsaits==1.0.0
-```
-
-From this source tree:
+## Install from source
 
 ```bash
 python -m pip install .
@@ -39,18 +26,25 @@ Core dependencies are `numpy`, `torch`, and `pypots`.
 ## Public API
 
 ```python
-from pcrsaits import PCRSAITS, PCRBRITS
+from pcrsaits import (
+    SAITSBackbone,
+    BRITSBackbone,
+    CSDIBackbone,
+    PCRSAITS,
+    PCRBRITS,
+    PCRCSDI,
+)
 ```
 
-Both are thin wrappers around the legacy-equivalence-tested `PCRCorrector`.
-A trained SAITS/BRITS backbone is supplied to the PCR wrapper; the PCR layer
-does not retrain or own the backbone checkpoint.
+All three PCR wrappers reuse the same audited `PCRCorrector`. Adding CSDI does
+not change the PCR feature construction, residual network, loss, mask logic, or
+window logic.
 
-For a new dataset, explicit feature metadata is the default:
+For a new dataset, explicit feature metadata remains the default:
 
 ```python
-model = PCRSAITS(
-    backbone=trained_saits,
+model = PCRCSDI(
+    backbone=trained_csdi,
     feature_names=["PM2.5", "TEMP", "WSPM"],
     feature_groups=["pollutant", "meteorological", "meteorological"],
 )
@@ -58,78 +52,82 @@ model.fit(train_values, val_values, seed=7)
 imputed = model.impute(masked_values)
 ```
 
-Allowed public feature groups are:
+Allowed public feature groups are `pollutant`, `sensor`, and
+`meteorological`. Legacy paper-suite name inference is still available through
+`metadata_mode="paper_legacy_inference"`.
 
-- `pollutant`
-- `sensor`
-- `meteorological`
+## CSDI backbone behavior
 
-To reproduce legacy paper-suite name inference, use:
+`CSDIBackbone` preserves CSDI's probabilistic samples while providing the
+deterministic adapter surface required by the unchanged PCR core:
 
 ```python
-model = PCRSAITS(
-    backbone=trained_saits,
-    feature_names=["CO(GT)", "PT08.S1(CO)", "T"],
-    metadata_mode="paper_legacy_inference",
-)
+samples = trained_csdi.sample(masked_windows)  # [N, S, L, F]
+point = trained_csdi.impute(masked_windows)    # [N, L, F]
 ```
+
+`impute()` uses the median across diffusion samples by default. The raw sample
+ensemble remains available through `sample()`. Phase 2 does **not** add the
+experimental PCR-CSDI-UQ feature path; Phase 3 preserves that exclusion and CSDI enters only as the third backbone
+adapter.
+
+When `sampling_seed` is an integer, repeated inference is deterministic for a
+fixed trained model/input and external CPU/CUDA RNG state is restored. Set
+`sampling_seed=None` for stochastic inference.
 
 ## Important inference behavior
 
 PCR correction is applied to every cell that is missing in the supplied input.
-Originally observed cells are restored exactly.
+Originally observed cells are restored exactly. CSDI samples and CSDI point
+imputations also restore observed values exactly at the adapter boundary.
 
 ## Save / load
 
-Backbone and PCR checkpoints are intentionally separate:
+Backbone and PCR checkpoints remain separate:
 
 ```python
-trained_saits.save("saits_backbone.pypots")
-model.save("pcrsaits.pt")
+trained_csdi.save("csdi_backbone.pypots")
+model.save("pcrcsdi.pt")
 ```
 
-After restoring the backbone:
+Restore the backbone first, then the PCR wrapper:
 
 ```python
-model = PCRSAITS.load("pcrsaits.pt", backbone=restored_saits)
+restored_csdi = CSDIBackbone.load_from_checkpoint(
+    "csdi_backbone.pypots",
+    # same constructor configuration used for the backbone
+    **csdi_config,
+)
+model = PCRCSDI.load("pcrcsdi.pt", backbone=restored_csdi)
 ```
 
 ## Examples
 
 - `examples/quickstart_pcrsaits.py`
 - `examples/quickstart_pcrbrits.py`
+- `examples/quickstart_pcrcsdi.py`
+
+A real PyPOTS integration verifier is provided at:
+
+```text
+scripts/verify_pcrcsdi_real_integration.py
+```
 
 ## Paper reproduction
 
-Historical experiment programs supplied by the author are preserved under
-`paper_reproduction/legacy_scripts/` with a SHA256 manifest.
+Historical experiment programs supplied by the author remain preserved under
+`paper_reproduction/legacy_scripts/` with their original SHA256 manifest. The
+Phase-2 integration does not alter those paper-reproduction sources.
 
-```bash
-python paper_reproduction/verify_sources.py
-```
-
-Final reviewer-specific Table 17 and patient-aware PhysioNet source identities
-are recorded separately so that older protocols are not silently presented as
-the final paper protocol.
-
-See:
-
-- `REPRODUCIBILITY.md`
-- `paper_reproduction/README.md`
-- `paper_reproduction/PHYSIONET_PROTOCOL.md`
+See `REPRODUCIBILITY.md` for the separation between reusable package code and
+historical research scripts.
 
 ## Citation
 
-See `CITATION.cff`.
+`CITATION.cff` describes software release candidate `v1.1.0`. The DOI below identifies the existing Zenodo software record; archival metadata is updated only when publication occurs.
 
-Software archive DOI: https://doi.org/10.5281/zenodo.22973879
-
-## Release status
-
-This tree is the `v1.0.0` release payload prepared for final pre-tag audit.
-The Git tag and archival deposit should be created only after the clean ZIP,
-wheel, and sdist hashes are independently verified.
-
+Software archive DOI:
+https://doi.org/10.5281/zenodo.22973879
 
 ## License
 
