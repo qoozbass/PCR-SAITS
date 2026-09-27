@@ -5,11 +5,20 @@ outside the stable public API.
 
 ## No-feature-group ablation
 
-File:
+Files:
 
 ```text
 no_feature_group_ablation.py
+quickstart_no_feature_group.py
 ```
+
+Start with the small functional example:
+
+```bash
+python experiments/quickstart_no_feature_group.py
+```
+
+Then use `no_feature_group_ablation.py` for the larger paired experiment.
 
 Purpose:
 

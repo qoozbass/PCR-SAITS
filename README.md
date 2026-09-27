@@ -515,8 +515,12 @@ public API mode**.
 For research analysis, the repository includes:
 
 ```text
+experiments/quickstart_no_feature_group.py
 experiments/no_feature_group_ablation.py
 ```
+
+The quickstart is a small functional demonstration. The ablation runner is the
+larger paired experiment used to quantify the effect of feature-group tags.
 
 This experiment removes only the two PCR domain-tag inputs while keeping the
 remaining PCR configuration unchanged. It compares, for each supported
