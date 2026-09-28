@@ -21,7 +21,11 @@ preferred-citation:
   authors:
     - family-names: "Somnugpong"
       given-names: "Sawet"
-  title: "PCR-SAITS: A Lightweight Disagreement-Based Residual Corrector for SAITS-Based Multivariate Time Series Imputation"
+  title: "PCR-SAITS: A lightweight disagreement-based residual corrector for SAITS-based multivariate time series imputation"
   journal: "Expert Systems with Applications"
-  year: 2026
+  volume: "334"
+  pages: "134510"
+  year: 2027
+  issn: "0957-4174"
   doi: "10.1016/j.eswa.2026.134510"
+  url: "https://www.sciencedirect.com/science/article/pii/S0957417426034147"

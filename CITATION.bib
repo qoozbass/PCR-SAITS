@@ -1,0 +1,13 @@
+@article{SOMNUGPONG2027134510,
+title = {PCR-SAITS: A lightweight disagreement-based residual corrector for SAITS-based multivariate time series imputation},
+journal = {Expert Systems with Applications},
+volume = {334},
+pages = {134510},
+year = {2027},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2026.134510},
+url = {https://www.sciencedirect.com/science/article/pii/S0957417426034147},
+author = {Sawet Somnugpong},
+keywords = {Time series imputation, Missing data, Residual correction, Environmental sensor networks, Deep learning, Post-hoc framework},
+abstract = {Missing values in multivariate time series are often imputed by deep backbones that capture global dependencies but can retain systematic position-level residual errors. We propose PCR-SAITS, a lightweight post-hoc corrector that combines a frozen SAITS imputation with seven effective local-centric signals, including a linear-interpolation reference, backbone–local disagreement, reference availability, gap length, and optional domain tags. A shallow bounded residual network is trained on held-out observed values without modifying the backbone. Across the primary benchmark (375 scenarios per dataset; 1,125 in total), PCR-SAITS reduces mean RMSE from 90.09 to 84.76 on UCI Air Quality (5.9%) and from 299.23 to 253.21 on Beijing PM2.5 (15.4%). Gap-stratified analysis shows strong long-gap gains on Beijing but a 20.39% degradation in the sparsely populated UCI 25–48 bucket, demonstrating that local references are not uniformly reliable. The same correction concept transfers to BRITS, reducing mean RMSE by 5.10% on UCI and 15.66% on Beijing. CSDI achieves lower RMSE and MAE than PCR-SAITS on both datasets, but at substantially higher training and inference cost. Validation on ETT-h1, PhysioNet 2012, and AR(1)+seasonal data broadens the empirical scope, with the patient-aware PhysioNet evaluation showing a modest improvement over SAITS. Downstream forecasting is neutral or mixed, while 75th-percentile exceedance classification improves F1 by 2.36% on UCI and 7.64% on Beijing. These results position PCR-SAITS as an interpretable accuracy–efficiency trade-off rather than a universally dominant imputer.}
+}

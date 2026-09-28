@@ -11,9 +11,11 @@ The PCR layer is trained on top of an already-trained imputation backbone. It do
 
 ## Associated paper
 
-**PCR-SAITS: A Lightweight Disagreement-Based Residual Corrector for SAITS-Based Multivariate Time Series Imputation**  
-Sawet Somnugpong, *Expert Systems with Applications* (2026)  
-DOI: https://doi.org/10.1016/j.eswa.2026.134510
+**PCR-SAITS: A lightweight disagreement-based residual corrector for SAITS-based multivariate time series imputation**  
+Sawet Somnugpong, *Expert Systems with Applications*, **334** (2027), Article **134510**  
+ISSN: `0957-4174`  
+DOI: https://doi.org/10.1016/j.eswa.2026.134510  
+Publisher page: https://www.sciencedirect.com/science/article/pii/S0957417426034147
 
 ## Release
 
@@ -592,10 +594,27 @@ If you use PCR-SAITS in research, please cite the associated paper and the appro
 
 ### Paper
 
-Somnugpong, S. (2026).  
-**PCR-SAITS: A Lightweight Disagreement-Based Residual Corrector for SAITS-Based Multivariate Time Series Imputation.**  
-*Expert Systems with Applications.*  
-https://doi.org/10.1016/j.eswa.2026.134510
+Recommended production citation:
+
+Somnugpong, S. (2027). **PCR-SAITS: A lightweight disagreement-based residual corrector for SAITS-based multivariate time series imputation.** *Expert Systems with Applications, 334*, 134510. https://doi.org/10.1016/j.eswa.2026.134510
+
+Publisher page: https://www.sciencedirect.com/science/article/pii/S0957417426034147
+
+BibTeX:
+
+```bibtex
+@article{SOMNUGPONG2027134510,
+title = {PCR-SAITS: A lightweight disagreement-based residual corrector for SAITS-based multivariate time series imputation},
+journal = {Expert Systems with Applications},
+volume = {334},
+pages = {134510},
+year = {2027},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2026.134510},
+url = {https://www.sciencedirect.com/science/article/pii/S0957417426034147},
+author = {Sawet Somnugpong}
+}
+```
 
 ### Zenodo
 
